@@ -1,0 +1,3 @@
+RECCOMENDATIONS 
+
+Use pooling in the project

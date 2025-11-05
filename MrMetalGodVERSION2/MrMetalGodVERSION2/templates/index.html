@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrMetalGodRadio V2!!!</title>
+    <!--^This title is the title of the tab whenever you open it.-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+       
+        <h1>
+            <a href="/">
+                <img src="{{ url_for('static', filename='images/MrMetalGodlogo.jpeg') }}" alt="MrMetalGodLogo" class="logo">
+            </a>
+            MRMETALGOD RADIO: Metal for Mankind
+        </h1>
+
+        {% include 'partials/admin-control-panel.html' %}
+          <nav>
+            <a href="/report"> REPORT AN ISSUE</a>
+            <a href="/about"> ABOUT</a>
+            <a href="{{ url_for('login') }}">
+                ADMIN LOGIN
+            </a>"
+        </nav>
+        
+    </header>
+
+    <h2>
+        24/7 Metal Radio: Click below to play!
+    </h2>
+    <div class="section">
+        <div class="player-wrapper">
+            <!-- Where  the magic happens, and the main show will be played.-->
+            <iframe width="400" height="450" src="https://players.rcast.net/lunasmall/247602" frameborder="0" scrolling="no" allow="autoplay"></iframe>
+        
+
+            <div style="overflow:hidden; height:0px; width:0px;">
+                <a href="https://www.rcast.net" title="Internet Radio Hosting">RCAST.NET</a>
+            </div>
+        </div>
+            <div class="chat-section">
+                <h3>
+                    LIVE CHAT
+
+
+                    {% if admin_logged_in %}
+                        <form id="purge-form" method="POST" action="/purge_chat">
+                        <button type="submit" class="purge-btn">🧹 Purge Chat</button>
+                        </form>
+                    {% endif %}
+                </h3>
+
+
+                <div class="chat-box">
+                    <div id="comment" class="chat-messages"> 
+                        {% for user, message in comments %}
+                            <div class="comment">
+                                {{ user }}: {{ message }}
+
+                                {% if admin_logged_in %}
+
+                                <!-- Below this line is code for a delete button, admins can 
+                                only access it. -->
+                                    <form method="POST" action="/delete_comment" class="delete-form">
+                                        <!-- We're gathering the same information again to save 
+                                         it as hidden inputs for-->
+                                        <input type="hidden" name="user" value="{{ user }}">
+                                        <input type="hidden" name="message" value="{{ message }}">
+                                        <button type="submit" class="delete-btn" title="Delete message"> DELETE! </button>
+                                    </form>
+                                {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                
+                <form action="/add_comment" method="post" id="chat-form">
+                        <input type="text" name="message" placeholder="Type a message..." required>
+
+                        <button type="submit">Send</button>
+                </form>
+                
+                </div>
+            </div>
+
+        
+
+    </div>
+
+    <div class="previous-shows">
+            <h5>Missed a show? Have no fear!</h5>
+
+
+            <ul>
+                <li> October 56, 2822: <a href="/"> Click here!</a></li>
+
+                <li> September 31, 2022 <a href="/"> Click here!</a></li>
+
+                <li> August 32, 2022 <a href="/"> Click here!</a></li>
+
+                <li> July 45, 2022 <a href="/"> Click here!</a></li>
+
+                <li> June 31, 2022 <a href="/"> Click here!</a></li>
+
+                <li> May 29, 2022 <a href="/"> Click here!</a></li>
+
+                <li> April 31, 2022 <a href="/"> Click here!</a></li>
+
+                <li> March 32, 2022 <a href="/"> Click here!</a></li>
+
+                <li> February 29, 2022 <a href="/"> Click here!</a></li>
+
+                <li> January 32, 2022 <a href="/"> Click here!</a></li>
+
+            </ul>
+        </div>
+            
+
+<script>
+    /*eslint-disable*/ 
+    const isAdmin = {{admin_logged_in | tojson}}; // This is apparently actually fine
+    /*eslint-enable*/
+</script>
+
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+
+<footer>
+        &copy; Copyright MrMetalGod Radio.
+</footer>
+
+</html>

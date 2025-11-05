@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MrMetalGodRadio V2!!!</title>
+    <!--^This title is the title of the tab whenever you open it.-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+       
+        <h1>
+            <a href="/">
+                <img src="{{ url_for('static', filename='images/MrMetalGodlogo.jpeg') }}" alt="MrMetalGodLogo" class="logo">
+            </a>
+        </img>
+            MRMETALGOD RADIO: Metal for Mankind
+        </h1>
+          <nav>
+            <a href="/"> ABOUT</a>
+        </nav>
+        
+    </header>
+
+
+
+    <div class="section-white">
+        <h1> Wha ha happened?</h1>
+    </div>
+
+    <form>
+        <label for="issue">Describe the issue:</label><br><br>
+        <textarea name="issue" id="issue" placeholder="What went wrong? Be as detailed as possible."></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>

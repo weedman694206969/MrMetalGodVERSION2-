@@ -1,0 +1,8 @@
+SSH hostname/server address : 198.251.89.164
+SSH port number : 25552
+Username for SSH connection : mrmetalg
+Password for SSH connection : {.R~Pgay~q:O
+Command :ssh mrmetalg@198.251.89.164 -p 25552
+
+
+venv: source /home4/mrmetalg/virtualenv/domains/mrmetalgod.com/public_html/projectfiles/3.11/bin/activate && cd /home4/mrmetalg/domains/mrmetalgod.com/public_html/projectfiles

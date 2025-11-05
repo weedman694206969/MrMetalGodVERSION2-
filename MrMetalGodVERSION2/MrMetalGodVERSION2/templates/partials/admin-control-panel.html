@@ -1,0 +1,15 @@
+{# templates/partials/admin-control-panel.html #}
+
+
+{% if admin_logged_in %}
+    <div style="background-color:grey; padding: 10px; border: 1px solid green; margin-bottom: 15px;">
+        Admin Access granted!
+
+        <form action="{{ url_for('logout') }}" method="get" style="display:inline;">
+            <button type="submit" style="margin-left: 10px;"> 
+                Log out!
+            </button>
+        </form>
+    </div>
+
+{% endif %}
